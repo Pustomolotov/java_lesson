@@ -11,14 +11,9 @@ public class HelloWorld {
 		Rectangle r = new Rectangle(4,6);
 		System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
 
-		Point p1 = new Point();
-		p1.x = 5;
-		p1.y = 6;
-		Point p2 = new Point();
-		p2.x = 7;
-		p2.y = 8;
+		Point point = new Point(10, 17, 25, 15);
 
-		distance(p1,p2);
+		System.out.println("Расстояние между точками " + "p1" + "("+point.x1 + ":" + point.y1 + ")" + " и " + "p2" + "(" + point.x2 + ":" + point.y2 + ")" + " =" + point.distance());
 
 	}
 
@@ -26,8 +21,4 @@ public class HelloWorld {
 		System.out.println("Hello " + somebody + "!");
 	}
 
-	public static void distance(Point p1, Point p2){
-		double d = Math.sqrt((p2.x - p1.x)*2 + (p2.y - p1.y)*2);
-		System.out.println("Расстояние между двумя точками: " + d);
-	}
 }
