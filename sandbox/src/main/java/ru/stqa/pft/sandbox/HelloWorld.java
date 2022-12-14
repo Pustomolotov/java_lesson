@@ -14,7 +14,7 @@ public class HelloWorld {
 		Point p1 = new Point(10,17);
 		Point p2 = new Point(16,20);
 
-		System.out.println("Расстояние между точками " + "p1" + "("+p1.x + ":" + p1.y + ")" + " и " + "p2" + "(" + p2.x + ":" + p2.y + ")" + " =" + p1.distance(p2, p1));
+		System.out.println("Расстояние между точками " + "p1" + "("+p1.x + ":" + p1.y + ")" + " и " + "p2" + "(" + p2.x + ":" + p2.y + ")" + " =" + p1.distance(p2));
 
 	}
 
