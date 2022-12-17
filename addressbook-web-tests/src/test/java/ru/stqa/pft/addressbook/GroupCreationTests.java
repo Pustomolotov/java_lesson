@@ -11,8 +11,10 @@ import java.time.Duration;
 
 public class GroupCreationTests {
   private WebDriver wd;
-
   private JavascriptExecutor js;
+
+  String userLogin = "admin";
+  String userPassword = "secret";
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
@@ -21,7 +23,7 @@ public class GroupCreationTests {
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     js = (JavascriptExecutor) wd;
     wd.get("http://localhost/addressbook/");
-    login("admin", "secret");
+    login(userLogin, userPassword);
   }
 
   private void login(String username, String password) {
@@ -72,12 +74,16 @@ public class GroupCreationTests {
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
+    logOut(userLogin, userPassword);
+    wd.quit();
+  }
+
+  private void logOut(String username, String password) {
     wd.findElement(By.linkText("Logout")).click();
     wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys("admin");
+    wd.findElement(By.name("user")).sendKeys(username);
     wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys("secret");
-    wd.quit();
+    wd.findElement(By.name("pass")).sendKeys(password);
   }
 
   private boolean isElementPresent(By by) {
