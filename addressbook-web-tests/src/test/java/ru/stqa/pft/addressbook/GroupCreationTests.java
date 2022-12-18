@@ -16,7 +16,7 @@ public class GroupCreationTests {
 
   String userLogin = "admin";
   String userPassword = "secret";
-  String groupName = "groupOne";
+  String groupName = "shomapisya";
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
