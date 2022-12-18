@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 
@@ -15,6 +16,7 @@ public class GroupCreationTests {
 
   String userLogin = "admin";
   String userPassword = "secret";
+  String groupName = "groupOne";
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
@@ -35,13 +37,14 @@ public class GroupCreationTests {
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
-  @Test
+  @Test (priority = 0)
   public void testGroupCreation() throws Exception {
     gotoGroupPage();
     initGroupCreation();
-    fillGroupForm(new GroupData("test1", "test2", "test3"));
+    fillGroupForm(new GroupData(groupName, "test2", "test3"));
     submitGroupCreation();
     returnToGroupPage();
+    System.out.println("group added successfully!");
   }
 
   private void returnToGroupPage() {
@@ -70,6 +73,100 @@ public class GroupCreationTests {
 
   private void gotoGroupPage() {
     wd.findElement(By.linkText("groups")).click();
+  }
+
+  @Test(priority = 1)
+  public void addContact() throws Exception{
+    gotoAddNewContact();
+    fillContactForm(new ContactData("Artem", "Pustik", "Vitalevich", "test1", "companys", "Hogvarts", "123456789", "B-o-t-u-n@mail.ru", "www.home.ru", "14", "June", "1996", "kek"));
+    submitContactCreation();
+    returnToHomePage();
+    System.out.println("contact added successfully!");
+  }
+
+  private void returnToHomePage() {
+    wd.findElement(By.linkText("home page")).click();
+  }
+
+  private void submitContactCreation() {
+    wd.findElement(By.xpath("//input[21]")).click();
+  }
+
+  private void fillContactForm(ContactData contactData) {
+    wd.findElement(By.name("firstname")).click();
+    wd.findElement(By.name("firstname")).clear();
+    wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstName());
+    wd.findElement(By.name("middlename")).click();
+    wd.findElement(By.name("middlename")).clear();
+    wd.findElement(By.name("middlename")).sendKeys(contactData.getMiddleName());
+    wd.findElement(By.name("lastname")).click();
+    wd.findElement(By.name("lastname")).clear();
+    wd.findElement(By.name("lastname")).sendKeys(contactData.getLastName());
+    wd.findElement(By.name("nickname")).click();
+    wd.findElement(By.name("nickname")).clear();
+    wd.findElement(By.name("nickname")).sendKeys(contactData.getFirstName());
+    wd.findElement(By.name("title")).click();
+    wd.findElement(By.name("title")).clear();
+    wd.findElement(By.name("title")).sendKeys(contactData.getTitle());
+    wd.findElement(By.name("company")).click();
+    wd.findElement(By.name("company")).clear();
+    wd.findElement(By.name("company")).sendKeys(contactData.getCompanyName());
+    wd.findElement(By.name("address")).click();
+    wd.findElement(By.name("address")).clear();
+    wd.findElement(By.name("address")).sendKeys(contactData.getFullAddress());
+    wd.findElement(By.name("home")).click();
+    wd.findElement(By.name("home")).clear();
+    wd.findElement(By.name("home")).sendKeys(contactData.getPhoneNumber());
+    wd.findElement(By.name("mobile")).click();
+    wd.findElement(By.name("mobile")).clear();
+    wd.findElement(By.name("mobile")).sendKeys(contactData.getPhoneNumber());
+    wd.findElement(By.name("work")).click();
+    wd.findElement(By.name("work")).clear();
+    wd.findElement(By.name("work")).sendKeys(contactData.getPhoneNumber());
+    wd.findElement(By.name("fax")).click();
+    wd.findElement(By.name("fax")).clear();
+    wd.findElement(By.name("fax")).sendKeys(contactData.getPhoneNumber());
+    wd.findElement(By.name("email")).click();
+    wd.findElement(By.name("email")).clear();
+    wd.findElement(By.name("email")).sendKeys(contactData.getMailContact());
+    wd.findElement(By.name("email2")).click();
+    wd.findElement(By.name("email2")).clear();
+    wd.findElement(By.name("email2")).sendKeys(contactData.getMailContact());
+    wd.findElement(By.name("email3")).click();
+    wd.findElement(By.name("email3")).clear();
+    wd.findElement(By.name("email3")).sendKeys(contactData.getMailContact());
+    wd.findElement(By.name("homepage")).click();
+    wd.findElement(By.name("homepage")).clear();
+    wd.findElement(By.name("homepage")).sendKeys(contactData.getHomePage());
+    wd.findElement(By.name("bday")).click();
+    new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getDay());
+    wd.findElement(By.name("bmonth")).click();
+    new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getMonth());
+    wd.findElement(By.name("byear")).click();
+    wd.findElement(By.name("byear")).clear();
+    wd.findElement(By.name("byear")).sendKeys(contactData.getYear());
+    wd.findElement(By.name("aday")).click();
+    new Select(wd.findElement(By.name("aday"))).selectByVisibleText(contactData.getDay());
+    wd.findElement(By.name("amonth")).click();
+    new Select(wd.findElement(By.name("amonth"))).selectByVisibleText(contactData.getMonth());
+    wd.findElement(By.name("ayear")).click();
+    wd.findElement(By.name("ayear")).clear();
+    wd.findElement(By.name("ayear")).sendKeys(contactData.getYear());
+    wd.findElement(By.name("new_group")).click();
+    new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(groupName);
+    wd.findElement(By.name("address2")).click();
+    wd.findElement(By.name("address2")).clear();
+    wd.findElement(By.name("address2")).sendKeys(contactData.getFullAddress());
+    wd.findElement(By.name("phone2")).click();
+    wd.findElement(By.name("phone2")).clear();
+    wd.findElement(By.name("phone2")).sendKeys(contactData.getPhoneNumber());
+    wd.findElement(By.name("notes")).click();
+    wd.findElement(By.name("notes")).clear();
+    wd.findElement(By.name("notes")).sendKeys(contactData.getNotesContact());
+  }
+
+  private void gotoAddNewContact() {
+    wd.findElement(By.linkText("add new")).click();
   }
 
   @AfterMethod(alwaysRun = true)
