@@ -22,7 +22,7 @@ public class ContactHelper extends HelperBase{
     click(By.xpath("//input[21]"));
   }
 
-  public void fillContactForm(ContactData contactData) {
+  public void fillContactForm(ContactData contactData){
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("middlename"), contactData.getMiddleName());
     type(By.name("lastname"), contactData.getLastName());
@@ -44,10 +44,34 @@ public class ContactHelper extends HelperBase{
     clickSelect(By.name("aday"), contactData.getDay());
     clickSelect(By.name("amonth"), contactData.getMonth());
     type(By.name("ayear"), contactData.getYear());
+  try {
+    wd.findElement(By.xpath("//select[@name='new_group']"));
     clickSelect(By.name("new_group"), groupName);
+    System.out.println("WebElement SEE");
+  } catch (Exception e) {
+    System.out.println("WebElement DON'T SEE");
+  }
     type(By.name("address2"), contactData.getFullAddress());
     type(By.name("phone2"), contactData.getPhoneNumber());
     type(By.name("notes"), contactData.getNotesContact());
+
   }
 
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void submitContactModification() {
+    click(By.xpath("//input[22]"));
+  }
+
+  public void submitContactDelete() {
+    click(By.xpath("//input[@value='Delete']"));
+    wd.switchTo().alert().accept();
+  }
+
+  public void editContact() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }
 }

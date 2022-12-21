@@ -16,7 +16,5 @@ public class SessionHelper extends HelperBase{
 
   public void logOut(String username, String password) {
     click(By.linkText("Logout"));
-    type(By.name("user"), username);
-    type(By.name("pass"), password);
   }
 }
