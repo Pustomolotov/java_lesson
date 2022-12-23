@@ -44,12 +44,14 @@ public class ContactHelper extends HelperBase{
     clickSelect(By.name("aday"), contactData.getDay());
     clickSelect(By.name("amonth"), contactData.getMonth());
     type(By.name("ayear"), contactData.getYear());
+
   try {
+//   WebElement group = (new WebDriverWait(wd, Duration.ofSeconds(2)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//select[@name='new_group']")))); //Пока должным образом не работает
     wd.findElement(By.xpath("//select[@name='new_group']"));
     clickSelect(By.name("new_group"), groupName);
-    System.out.println("WebElement SEE");
+    System.out.println("WebElement available");
   } catch (Exception e) {
-    System.out.println("WebElement DON'T SEE");
+    System.out.println("WebElement DON'T available");
   }
     type(By.name("address2"), contactData.getFullAddress());
     type(By.name("phone2"), contactData.getPhoneNumber());
