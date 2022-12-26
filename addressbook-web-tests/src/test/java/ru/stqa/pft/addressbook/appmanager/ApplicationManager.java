@@ -16,7 +16,6 @@ public class ApplicationManager {
   private  SessionHelper sessionHelper;
   String userLogin = "admin";
   String userPassword = "secret";
-  String groupName = "groupOne";
   private JavascriptExecutor js;
   WebDriver wd;
   private Browser browser;
@@ -32,13 +31,13 @@ public class ApplicationManager {
     }else if (browser.equals(Browser.FIREFOX)){
       wd = new FirefoxDriver(new FirefoxOptions().setBinary("C:/Program Files/Mozilla Firefox/firefox.exe"));
     }
-    wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+    wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
     js = (JavascriptExecutor) wd;
     wd.get("http://localhost/addressbook/");
-    groupHelper = new GroupHelper(wd, groupName);
+    groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
-    contactHelper = new ContactHelper(wd, groupName);
+    contactHelper = new ContactHelper(wd);
     sessionHelper.login(userLogin, userPassword);
   }
 

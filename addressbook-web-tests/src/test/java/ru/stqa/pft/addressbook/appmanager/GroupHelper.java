@@ -5,12 +5,9 @@ import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 public class GroupHelper extends HelperBase {
-  public String groupName;
 
-  public GroupHelper(WebDriver wd, String groupName) {
+  public GroupHelper(WebDriver wd) {
     super(wd);
-    this.groupName = groupName;
-
   }
 
 

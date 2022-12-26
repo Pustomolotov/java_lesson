@@ -2,16 +2,15 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase{
 
-  private String groupName;
 
 
-  public ContactHelper(WebDriver wd, String groupName) {
+  public ContactHelper(WebDriver wd) {
     super(wd);
-    this.groupName = groupName;
   }
 
   public void returnToHomePage() {
@@ -22,7 +21,7 @@ public class ContactHelper extends HelperBase{
     click(By.xpath("//input[21]"));
   }
 
-  public void fillContactForm(ContactData contactData){
+  public void fillContactForm(ContactData contactData, boolean creation){
     type(By.name("firstname"), contactData.getFirstName());
     type(By.name("middlename"), contactData.getMiddleName());
     type(By.name("lastname"), contactData.getLastName());
@@ -44,15 +43,12 @@ public class ContactHelper extends HelperBase{
     clickSelect(By.name("aday"), contactData.getDay());
     clickSelect(By.name("amonth"), contactData.getMonth());
     type(By.name("ayear"), contactData.getYear());
-
-  try {
-//   WebElement group = (new WebDriverWait(wd, Duration.ofSeconds(2)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//select[@name='new_group']")))); //Пока должным образом не работает
-    wd.findElement(By.xpath("//select[@name='new_group']"));
-    clickSelect(By.name("new_group"), groupName);
-    System.out.println("WebElement available");
-  } catch (Exception e) {
-    System.out.println("WebElement DON'T available");
-  }
+//    wd.findElement(By.xpath("//select[@name='new_group']"));
+    if (creation) {
+      clickSelect(By.name("new_group"), contactData.getGroup());
+    } else  {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
     type(By.name("address2"), contactData.getFullAddress());
     type(By.name("phone2"), contactData.getPhoneNumber());
     type(By.name("notes"), contactData.getNotesContact());
