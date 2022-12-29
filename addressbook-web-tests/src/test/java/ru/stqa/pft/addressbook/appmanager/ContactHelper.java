@@ -45,7 +45,7 @@ public class ContactHelper extends HelperBase{
     type(By.name("ayear"), contactData.getYear());
 //    wd.findElement(By.xpath("//select[@name='new_group']"));
     if (creation) {
-      clickSelect(By.name("new_group"), contactData.getGroup());
+          clickSelect(By.name("new_group"), contactData.getGroup());
     } else  {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -71,5 +71,13 @@ public class ContactHelper extends HelperBase{
 
   public void editContact() {
     click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public boolean isThereAGroupWithContact() {
+    int  countElements = wd.findElements(By.xpath("//*[@id=\"content\"]/form/select[5]/option")).size();
+    if (countElements >=2){
+      return false;
+    }
+    return true;
   }
 }
