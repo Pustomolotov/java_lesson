@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
-public class ContactHelper extends HelperBase{
+
+
+public class ContactHelper extends HelperBase {
 
 
 
@@ -43,7 +45,6 @@ public class ContactHelper extends HelperBase{
     clickSelect(By.name("aday"), contactData.getDay());
     clickSelect(By.name("amonth"), contactData.getMonth());
     type(By.name("ayear"), contactData.getYear());
-//    wd.findElement(By.xpath("//select[@name='new_group']"));
     if (creation) {
           clickSelect(By.name("new_group"), contactData.getGroup());
     } else  {
@@ -79,5 +80,25 @@ public class ContactHelper extends HelperBase{
       return false;
     }
     return true;
+  }
+
+  public void gotoAddNewContact() {
+    if (isElementPresent(By.tagName("h1"))
+            && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
+            && isElementPresent(By.name("submit"))){
+      return;
+    }
+    click(By.linkText("add new"));
+  }
+
+  public void createContact (ContactData contact, boolean creation) {
+    gotoAddNewContact();
+    fillContactForm(contact, creation);
+    submitContactCreation();
+    returnToHomePage();
+  }
+
+  public boolean isThereAContact() {
+    return  isElementPresent(By.name("entry"));
   }
 }

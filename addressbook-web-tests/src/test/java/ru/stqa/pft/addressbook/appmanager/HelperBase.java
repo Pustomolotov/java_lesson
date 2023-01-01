@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -32,7 +33,11 @@ public class HelperBase {
       String selectText = wd.findElement(locator).getAttribute("value");
       if (!text.equals(selectText)) {
         wd.findElement(locator).click();
-        new Select(wd.findElement(locator)).selectByVisibleText(text);
+        try {
+          new Select(wd.findElement(locator)).selectByVisibleText(text);
+        } catch (NoSuchElementException e){
+          wd.findElement(By.xpath("//select[5]/option[2]")).click();
+        }
       }
     }
   }
