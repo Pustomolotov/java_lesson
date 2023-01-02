@@ -91,9 +91,9 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void createContact (ContactData contact, boolean creation) {
+  public void createContact (ContactData contact) {
     gotoAddNewContact();
-    fillContactForm(contact, creation);
+    fillContactForm(contact, true);
     submitContactCreation();
     returnToHomePage();
   }

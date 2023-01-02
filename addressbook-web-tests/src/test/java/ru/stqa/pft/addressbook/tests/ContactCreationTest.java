@@ -14,7 +14,7 @@ public class ContactCreationTest extends TestBase{
       app.getNavigationHelper().gotoGroupPage();
       app.getGroupHelper().createGroup(new GroupData("test1", null, null));
     }
-    app.getContactHelper().createContact(new ContactData("Artem", "Pustik", "Vitalevich", "test1", "companys", "Hogvarts", "123456789", "B-o-t-u-n@mail.ru", "www.home.ru", "14", "June", "1996", "kek", "test5" ), true);
+    app.getContactHelper().createContact(new ContactData("Artem", "Pustik", "Vitalevich", "test1", "companys", "Hogvarts", "123456789", "B-o-t-u-n@mail.ru", "www.home.ru", "14", "June", "1996", "kek", "test555" ));
     System.out.println("contact added successfully!");
   }
 
