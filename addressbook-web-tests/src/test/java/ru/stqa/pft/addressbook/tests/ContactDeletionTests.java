@@ -16,8 +16,12 @@ public class ContactDeletionTests extends TestBase{
       app.getNavigationHelper().gotoHomePage();
       app.getContactHelper().createContact(new ContactData("Artem", "Pustik", "Vitalevich", "test1", "companys", "Hogvarts", "123456789", "B-o-t-u-n@mail.ru", "www.home.ru", "14", "June", "1996", "kek", "test555" ));
     }
+//    int before = app.getContactHelper().getContactCount();
     app.getContactHelper().selectContact();
     app.getContactHelper().submitContactDelete();
     System.out.println("Contact deleted successfully!");
+//    int after = app.getContactHelper().getContactCount();
+//    Assert.assertEquals(after, before - 1);
+//    Нужно решить вопрос с ожиданием. Полсчёт идёт до удаления. Либо через If. Если страница home, то выполнять проверку.
   }
 }

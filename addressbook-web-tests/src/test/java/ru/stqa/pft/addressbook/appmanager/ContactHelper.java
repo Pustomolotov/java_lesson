@@ -6,7 +6,6 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 
-
 public class ContactHelper extends HelperBase {
 
 
@@ -100,5 +99,9 @@ public class ContactHelper extends HelperBase {
 
   public boolean isThereAContact() {
     return  isElementPresent(By.name("entry"));
+  }
+
+  public int getContactCount() {
+    return  wd.findElements(By.name("entry")).size();
   }
 }
