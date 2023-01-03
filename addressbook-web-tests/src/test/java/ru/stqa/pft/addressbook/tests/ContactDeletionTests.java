@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -21,7 +22,7 @@ public class ContactDeletionTests extends TestBase{
     app.getContactHelper().submitContactDelete();
     System.out.println("Contact deleted successfully!");
     int after = app.getContactHelper().getContactCount();
-//    Assert.assertEquals(after, before - 1);
-//    Нужно решить вопрос с ожиданием. Полсчёт идёт до удаления.
+   Assert.assertEquals(after, before - 1);
+//    Нужно решить вопрос с ожиданием. Полсчёт идёт до удаления. Нашёл такое: TimeUnit.SECONDS.sleep(10); Делает задержку ожидания. Нужно разобраться с этим подробнее.
   }
 }
