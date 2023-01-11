@@ -8,7 +8,6 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
 public class ContactHelper extends HelperBase {
@@ -72,7 +71,7 @@ public class ContactHelper extends HelperBase {
   public void submitContactDelete(int timeOut) throws InterruptedException {
     click(By.xpath("//input[@value='Delete']"));
     wd.switchTo().alert().accept();
-    TimeUnit.SECONDS.sleep(timeOut);
+    timeOut(timeOut);
   }
 
   public void editContact(int index) {

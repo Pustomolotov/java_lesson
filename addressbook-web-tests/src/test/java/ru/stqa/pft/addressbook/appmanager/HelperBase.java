@@ -6,11 +6,17 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.concurrent.TimeUnit;
+
 public class HelperBase {
   protected WebDriver wd;
 
   public HelperBase(WebDriver wd) {
     this.wd = wd;
+  }
+
+  protected static void timeOut(int timeOut) throws InterruptedException {
+    TimeUnit.SECONDS.sleep(timeOut);
   }
 
   protected void click(By locator) {
