@@ -24,8 +24,8 @@ public class ContactModificationTests extends TestBase{
     app.getContactHelper().fillContactForm(new ContactData("Artem", null, null, null, null, null, null, null, null, null, null, null, null, null), false);
     app.getContactHelper().submitContactModification();
     app.getContactHelper().returnToHomePage();
-    System.out.println("contact modification successfully!");
     List<ContactData> after = app.getContactHelper().getContactList();
     Assert.assertEquals(after.size(), before.size());
+
   }
 }
