@@ -15,10 +15,11 @@ public class ContactDeletionTests extends TestBase{
     if(app.contact().list().size() == 0){
       app.goTo().groupPage();
       if (app.group().list().size() == 0){
-        app.group().create(new GroupData("Test1", "test2", "test3"));
+        app.group().create(new GroupData().withName("tes1"));
       }
       app.goTo().homePage();
-      app.contact().create(new ContactData("Artem", "Pustik", "Vitalevich", "test1", "companys", "Hogvarts", "123456789", "B-o-t-u-n@mail.ru", "www.home.ru", "14", "June", "1996", "kek", "test1" ));
+      app.contact().create(new ContactData()
+              .withLastName("Vitalevich").withFirstName("Artem").withMiddleName("Pustik").withTitle("test1").withCompanyName("companys").withFullAddress("Hogvarts").withPhoneNumber("123456789").withMailContact("B-o-t-u-n@mail.ru").withNotesContact("www.home.ru").withDay("14").withMonth("June").withYear("1996").withHomePage("kek").withGroup("test1"));
     }
   }
   @Test

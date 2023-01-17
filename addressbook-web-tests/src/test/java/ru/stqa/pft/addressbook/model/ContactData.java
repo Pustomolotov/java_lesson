@@ -4,62 +4,99 @@ import java.util.Objects;
 
 public class ContactData {
 
-  private int id;
-  private final String firstName;
-  private final String middleName;
-  private final String lastName;
-  private final String title;
-  private final String companyName;
-  private final String fullAddress;
-  private final String phoneNumber;
-  private final String mailContact;
-  private final String homePage;
-  private final String day;
-  private final String month;
-  private final String year;
-  private final String notesContact;
+  private int id = Integer.MAX_VALUE;
+  private  String firstName;
+  private  String middleName;
+  private  String lastName;
+  private  String title;
+  private  String companyName;
+  private  String fullAddress;
+  private  String phoneNumber;
+  private  String mailContact;
+  private  String homePage;
+  private  String day;
+  private  String month;
+  private  String year;
+  private  String notesContact;
   private String group;
 
-  public ContactData(String firstName, String middleName, String lastName, String title, String companyName, String fullAddress, String phoneNumber, String mailContact, String homePage, String day, String month, String year, String notesContact, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.title = title;
-    this.companyName = companyName;
-    this.fullAddress = fullAddress;
-    this.phoneNumber = phoneNumber;
-    this.mailContact = mailContact;
-    this.homePage = homePage;
-    this.day = day;
-    this.month = month;
-    this.year = year;
-    this.notesContact = notesContact;
-    this.group = group;
-  }
-
-  public ContactData(int id,String firstName, String middleName, String lastName, String title, String companyName, String fullAddress, String phoneNumber, String mailContact, String homePage, String day, String month, String year, String notesContact, String group) {
+  public ContactData withId(int id) {
     this.id = id;
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.title = title;
-    this.companyName = companyName;
-    this.fullAddress = fullAddress;
-    this.phoneNumber = phoneNumber;
-    this.mailContact = mailContact;
-    this.homePage = homePage;
-    this.day = day;
-    this.month = month;
-    this.year = year;
-    this.notesContact = notesContact;
-    this.group = group;
+    return this;
   }
 
+  public ContactData withFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public ContactData withMiddleName(String middleName) {
+    this.middleName = middleName;
+    return this;
+  }
+
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public ContactData withTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public ContactData withCompanyName(String companyName) {
+    this.companyName = companyName;
+    return this;
+  }
+
+  public ContactData withFullAddress(String fullAddress) {
+    this.fullAddress = fullAddress;
+    return this;
+  }
+
+  public ContactData withPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+    return this;
+  }
+
+  public ContactData withMailContact(String mailContact) {
+    this.mailContact = mailContact;
+    return this;
+  }
+
+  public ContactData withHomePage(String homePage) {
+    this.homePage = homePage;
+    return this;
+  }
+
+  public ContactData withDay(String day) {
+    this.day = day;
+    return this;
+  }
+
+  public ContactData withMonth(String month) {
+    this.month = month;
+    return this;
+  }
+
+  public ContactData withYear(String year) {
+    this.year = year;
+    return this;
+  }
+
+  public ContactData withNotesContact(String notesContact) {
+    this.notesContact = notesContact;
+    return this;
+  }
+
+  public ContactData withGroup(String group) {
+    this.group = group;
+    return this;
+  }
   public int getId() {
     return id;
   }
-
   public String getFirstName() {
     return firstName;
   }
