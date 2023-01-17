@@ -86,7 +86,7 @@ public class ContactHelper extends HelperBase {
     return true;
   }
 
-  public void gotoAddNewContact() {
+  public void addNewContact() {
     if (isElementPresent(By.tagName("h1"))
             && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
             && isElementPresent(By.name("submit"))){
@@ -95,19 +95,22 @@ public class ContactHelper extends HelperBase {
     click(By.linkText("add new"));
   }
 
-  public void createContact (ContactData contact) {
-    gotoAddNewContact();
+  public void create(ContactData contact) {
+    addNewContact();
     fillContactForm(contact, true);
     submitContactCreation();
     returnToHomePage();
   }
-  public   void modifyContact(int index, ContactData contact) {
+  public   void modify(int index, ContactData contact) {
     editContact(index);
     fillContactForm(contact, false);
     submitContactModification();
     returnToHomePage();
   }
-
+  public   void delete(int index) throws InterruptedException {
+    selectContact(index);
+    submitContactDelete(5);
+  }
   public boolean isThereAContact() {
     return  isElementPresent(By.name("entry"));
   }
@@ -116,7 +119,7 @@ public class ContactHelper extends HelperBase {
     return  wd.findElements(By.name("entry")).size();
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=\"entry\"]"));
     for (WebElement element : elements){
