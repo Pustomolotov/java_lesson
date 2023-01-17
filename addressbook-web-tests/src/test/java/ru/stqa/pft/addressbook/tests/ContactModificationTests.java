@@ -13,13 +13,13 @@ public class ContactModificationTests extends TestBase{
 
   @BeforeMethod
   public void ensuePreconditions(){
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
     if(!app.getContactHelper().isThereAContact()){
-      app.getNavigationHelper().gotoGroupPage();
-      if (!app.getGroupHelper().isThereAGroup()){
-        app.getGroupHelper().createGroup(new GroupData("Test1", "test2", "test3"));
+      app.goTo().groupPage();
+      if (!app.group().isThereAGroup()){
+        app.group().create(new GroupData("Test1", "test2", "test3"));
       }
-      app.getNavigationHelper().gotoHomePage();
+      app.goTo().gotoHomePage();
       app.getContactHelper().createContact(new ContactData("Artem", "Pustik", "Vitalevich", "test1", "companys", "Hogvarts", "123456789", "B-o-t-u-n@mail.ru", "www.home.ru", "14", "June", "1996", "kek", "test1" ));
     }
   }
