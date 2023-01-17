@@ -67,13 +67,7 @@ public class GroupHelper extends HelperBase {
     deleteSelectedGroups();
     returnToGroupPage();
   }
-  public boolean isThereAGroup() {
-    return isElementPresent(By.name("selected[]"));
-  }
 
-  public int getGroupCount() {
-  return   wd.findElements(By.name("selected[]")).size();
-  }
 
   public List<GroupData> list() {
     List<GroupData> groups = new ArrayList<GroupData>();

@@ -111,13 +111,6 @@ public class ContactHelper extends HelperBase {
     selectContact(index);
     submitContactDelete(5);
   }
-  public boolean isThereAContact() {
-    return  isElementPresent(By.name("entry"));
-  }
-
-  public int getContactCount() {
-    return  wd.findElements(By.name("entry")).size();
-  }
 
   public List<ContactData> list() {
     List<ContactData> contacts = new ArrayList<ContactData>();
