@@ -7,7 +7,6 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -117,18 +116,6 @@ public class ContactHelper extends HelperBase {
   public void delete(ContactData contact) throws InterruptedException{
     selectContactById(contact.getId());
     submitContactDelete(5);
-  }
-  public List<ContactData> list() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=\"entry\"]"));
-    for (WebElement element : elements){
-      String lastName = element.findElement(By.cssSelector("td:nth-child(2)")).getText();
-      String firstName = element.findElement(By.cssSelector("td:nth-child(3)")).getText();
-      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id"));
-      ContactData contact = new ContactData().withId(id).withFirstName(firstName).withLastName(lastName);
-      contacts.add(contact);
-    }
-    return contacts;
   }
 
   public Contacts all() {

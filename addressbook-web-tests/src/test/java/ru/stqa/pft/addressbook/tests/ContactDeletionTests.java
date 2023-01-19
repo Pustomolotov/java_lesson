@@ -14,9 +14,9 @@ public class ContactDeletionTests extends TestBase{
   @BeforeMethod
   public void ensuePreconditions(){
     app.goTo().homePage();
-    if(app.contact().list().size() == 0){
+    if(app.contact().all().size() == 0){
       app.goTo().groupPage();
-      if (app.group().list().size() == 0){
+      if (app.group().all().size() == 0){
         app.group().create(new GroupData().withName("tes1"));
       }
       app.goTo().homePage();
